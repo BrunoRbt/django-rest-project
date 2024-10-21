@@ -10,17 +10,17 @@ router.register('authors', AuthorViewSet, basename='authors')
 
 # Definindo as rotas de autenticação e as rotas do router
 urlpatterns = [
+    # Root URL
+    path('', home, name='home'),  # Ensure this line is present
+
     # Rotas para obtenção e atualização de tokens JWT
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     
     # Incluindo as rotas do ViewSet de autores geradas pelo router
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 
     # Novas rotas sugeridas
     path('books/', views.book_list, name='book_list'),
     path('authors/', views.author_list, name='author_list'),
-
-    # Root URL
-    path('', home, name='home'),  # Add this line
 ]
