@@ -16,12 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from api import views  # Importando as views do módulo api
+from api.views import home  # Import the home view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
-    path('books/', views.book_list, name='book_list'),
-    path('authors/', views.author_list, name='author_list'),
-    # outras rotas...
+    path('', home, name='home'),  # Define the root URL here
+    path('api/', include('api.urls')),  # Include the api/urls.py file
 ]
