@@ -2,6 +2,7 @@ from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.routers import DefaultRouter
 from .views import AuthorViewSet
+from . import views
 
 # Criando o router e registrando o ViewSet de Author
 router = DefaultRouter()
@@ -15,4 +16,9 @@ urlpatterns = [
     
     # Incluindo as rotas do ViewSet de autores geradas pelo router
     path('', include(router.urls)),
+
+    # Novas rotas sugeridas
+    path('books/', views.book_list, name='book_list'),
+    path('authors/', views.author_list, name='author_list'),
+    # outras rotas...
 ]

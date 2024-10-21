@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from api import views  # Importando as views do módulo api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('books/', views.book_list, name='book_list'),
+    path('authors/', views.author_list, name='author_list'),
+    # outras rotas...
 ]
